@@ -1,31 +1,14 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import {
   createBrowserRouter,
   RouterProvider,
-  NavLink,
   Outlet
 } from 'react-router-dom';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from 'reactstrap';
+
 import Home from './pages/home';
 import Login from './pages/login';
 import Header from './pages/navbar';
-
-const activeStyle = {
-  fontWeight: "bold",
-  color: "red"
-};
 
 const router = createBrowserRouter([
   {
@@ -53,57 +36,15 @@ export default function App() {
 }
 
 function Root() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
-
   return (
     <div>
-      <Navbar className="nav-style" expand="md">
-        <NavbarBrand href="/">Amazing Animals</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="me-auto" navbar>
-            <NavItem>
-              <NavLink
-                to="/"
-                // If the link is active, apply the activeStyle
-                style={({ isActive }) => (isActive ? activeStyle : null)}>
-                Countries
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/">
-                I don't know
-              </NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-
-          <Nav navbar>
-            <NavItem>
-              <NavLink
-                to="/login"
-                // If the link is active, apply the activeStyle
-                style={({ isActive }) => (isActive ? activeStyle : null)}>
-                Login
-              </NavLink>
-            </NavItem>
-          </Nav>
-
-        </Collapse>
-      </Navbar>
+      {/* In a real application you should probably put your
+    naviation in its own file. For this simple example we will
+    leave it here */}
+      <Header />
       {/* Outlet is where the active route will be rendered */}
       <Outlet />
-    </div >
+
+    </div>
   );
 }

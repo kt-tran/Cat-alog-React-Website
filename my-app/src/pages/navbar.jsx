@@ -13,6 +13,13 @@ import {
     DropdownItem,
 } from 'reactstrap';
 
+//TODO: implement stateful navbar
+const activeStyle = {
+    fontWeight: "bold",
+    color: "red"
+};
+
+
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -29,7 +36,7 @@ export default function Header() {
                         </NavItem>
                         <NavItem>
                             <NavLink href="/">
-                                
+
                             </NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
@@ -52,7 +59,7 @@ export default function Header() {
                             </NavLink>
                         </NavItem>
                     </Nav>
-                        
+
                 </Collapse>
             </Navbar>
         </div>

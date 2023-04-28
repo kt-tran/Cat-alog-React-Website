@@ -9,6 +9,7 @@ import {
 import Home from './pages/home';
 import Login from './pages/login';
 import Header from './pages/navbar';
+import Details from './pages/details';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/navbartest",
         element: <Header />
+      },
+      {
+        path:"/itemtest",
+        element: <Details />
       }
     ]
   }

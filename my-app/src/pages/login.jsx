@@ -7,7 +7,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     return (
-        <div className="container">
+        <div className="container mt-5">
             <div className="container d-flex justify-content-center">
                 <h1> Welcome {usernameArray[0]}!</h1>
             </div>

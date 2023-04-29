@@ -10,6 +10,7 @@ import Home from './pages/home';
 import Login from './pages/login';
 import Header from './pages/navbar';
 import Details from './pages/details';
+import CatTable from './pages/table';
 
 const router = createBrowserRouter([
   {
@@ -29,8 +30,12 @@ const router = createBrowserRouter([
         element: <Header />
       },
       {
-        path:"/itemtest",
+        path: "/itemtest",
         element: <Details />
+      },
+      {
+        path: "/cats",
+        element: <CatTable />
       }
     ]
   }

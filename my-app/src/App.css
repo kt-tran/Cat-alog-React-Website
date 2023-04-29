@@ -31,3 +31,11 @@ a.nav-link,
 a.navbar-brand {
   color: white;
 }
+
+.navPaw {
+  margin-bottom: 7px;
+}
+
+.catTable {
+  height: 400px;
+}

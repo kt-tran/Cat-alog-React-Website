@@ -12,6 +12,7 @@ import {
     DropdownMenu,
     DropdownItem,
 } from 'reactstrap';
+import { FaPaw } from "react-icons/fa";
 
 //TODO: implement stateful navbar
 const activeStyle = {
@@ -27,12 +28,15 @@ export default function Header() {
     return (
         <div>
             <Navbar className="nav-style" expand="md">
-                <NavbarBrand href="/">Amazing Animals</NavbarBrand>
+                <NavbarBrand href="/"> Purrfect Paws <FaPaw className="navPaw"/></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="me-auto" navbar>
                         <NavItem>
-                            <NavLink href="/">Countries</NavLink>
+                            <NavLink href="/cats">Browse</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/">Random</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/">

@@ -5,13 +5,14 @@ import {
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavItem,
     NavLink,
+    NavItem,
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
 } from 'reactstrap';
+import { NavLink as Routing } from 'react-router-dom';
 import { FaPaw } from "react-icons/fa";
 
 //TODO: implement stateful navbar
@@ -28,30 +29,34 @@ export default function Header() {
     return (
         <div>
             <Navbar className="nav-style" expand="md">
-                <NavbarBrand href="/"> Purrfect Paws <FaPaw className="navPaw"/></NavbarBrand>
+                <NavbarBrand tag={Routing} to="/"> Purrfect Paws <FaPaw className="navPaw" /></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="me-auto" navbar>
                         <NavItem>
-                            <NavLink href="/cats">Browse</NavLink>
+                            <NavLink tag={Routing} to="/cats" className="darkNav">Browse</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/">Random</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="/">
-
-                            </NavLink>
+                            <NavLink tag={Routing} to="/itemtest" className="darkNav">Random</NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                Options
+                            <DropdownToggle nav caret className="darkNav">
+                                Search
                             </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem>Option 1</DropdownItem>
-                                <DropdownItem>Option 2</DropdownItem>
+                            <DropdownMenu end>
+                                <DropdownItem className="lightNav" >
+                                    <NavLink tag={Routing} to="/searchCat" className="lightNav">
+                                        For a cat
+                                    </NavLink>
+                                </DropdownItem>
+
                                 <DropdownItem divider />
-                                <DropdownItem>Reset</DropdownItem>
+
+                                <DropdownItem>
+                                    <NavLink tag={Routing} to="/searchCountry" className="lightNav">
+                                        For a country
+                                    </NavLink>
+                                </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>

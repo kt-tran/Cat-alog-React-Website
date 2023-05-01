@@ -1,47 +1,74 @@
 import { AgGridReact } from "ag-grid-react";
 import { Row } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { getBreedList } from "../components/api";
+import { HandleGetList } from "../components/api";
+import { AffectionRenderer } from "../components/affectionRenderer";
+import { ChildfriendlyRenderer } from "../components/childfriendlyRenderer";
+import { HypoallergenicRenderer } from "../components/hypoallergenicRenderer";
+import { EnergeticRenderer } from "../components/energeticRenderer";
+import { IntelligenceRenderer } from "../components/intelligenceRenderer";
 
 export default function CatTable() {
+    let textCustomFilterParams = {
+        filterOptions: ['contains']
+    };
+
+    let numCustomFilterParams = {
+        filterOptions: ['equals', 'lessThan', 'greaterThan', 'inRange']
+    }
+
+    const navigate = useNavigate();
+
     const [rowData, setRowData] = useState([]);
+    const [columnDefs, setColumnDefs] = useState([
+        { headerName: "Name", field: "name", filter: 'agTextColumnFilter', filterParams: textCustomFilterParams },
+        { headerName: "Country", field: "country", filter: 'agTextColumnFilter', filterParams: textCustomFilterParams },
+        { headerName: "Weight Range (kg)", field: "weight" },
+        { headerName: "Average Lifespan (years)", field: "lifespan" },
+        { headerName: "Intelligence", field: "intelligence", cellRenderer: IntelligenceRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams },
+        { headerName: "Affection Meter", field: "affection", cellRenderer: AffectionRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams },
+        { headerName: "Energy Meter", field: "energy", cellRenderer: EnergeticRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams },
+        { headerName: "Hypoallergenic", field: "hypoallergenic", cellRenderer: HypoallergenicRenderer },
+        { headerName: "Childfriendly", field: "childfriendly", cellRenderer: ChildfriendlyRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams },
+    ]);
 
-    const columns = [
-        { headerName: "Name", field: "name" },
-        { headerName: "ID", field: "id" },
-        { headerName: "Country", field: "country" },
-    ];
-
-    useEffect(() => {
-        fetch(`https://api.thecatapi.com/v1/breeds`)
-            .then(res => res.json())
-            .then(data => data.map(cat => {
-                return {
-                    id: cat.id,
+    const { loading, list, error } = HandleGetList();
+    
+    function GetRowData() {
+        if (loading === false) {
+            return list.map((cat) => (
+                {
                     name: cat.name,
-                    //weight: cat.,
-                    country: cat.origin
-                    //lifespan:
-                };
-            })
-            )
-            .then(cats => setRowData(cats));
-    }, []);
+                    lifespan: cat.life_span,
+                    country: cat.origin,
+                    weight: cat.weight.metric,
+                    affection: cat.affection_level,
+                    energy: cat.energy_level,
+                    childfriendly: cat.child_friendly,
+                    hypoallergenic: cat.hypoallergenic,
+                    intelligence: cat.intelligence
+                }
+            ))
+        }
+    };
 
     return (
-        <div className="container mt-3">
-            <Row className="mb-3">
-                <h1> Cat-egories </h1>
+        <div className="container-fluid px-5 mt-3">
+            <Row className="text-center mb-3">
+                <h1> Species of Cats </h1>
             </Row>
-            <Row className="catTable">
-                <div className="ag-theme-alpine" style={{
-                    height: '100%',
-                    width: '100%',
-                }}>
+            <Row>
+                <div className="ag-theme-alpine catTable">
                     <AgGridReact
-                        columnDefs={columns}
-                        rowData={rowData}
+                        columnDefs={columnDefs}
+                        rowData={GetRowData()}
                         pagination={true}
+                        onRowClicked={(
+                            row) => {
+                            console.log("row clicked", row.data.name)
+                            navigate("/itemtest");
+                        }}
                     />
                 </div>
             </Row>

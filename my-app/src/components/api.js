@@ -3,34 +3,42 @@ import { useState, useEffect } from 'react';
 
 
 const API_KEY = 'live_lrShtLyQ7EGPrE3YexNLwARt62UHXJmKhgYd8HPHFwtR1mP7QJDqsGjj0yTSGZ70';
+const testCat = "Abyssinian";
 
-// export function useTestAPI() {
-//     const [loading, setLoading] = useState(true);
-//     const [image, setImage] = useState([]);
-//     const [error, setError] = useState(null);
-//     useEffect(() => {
-//         (async () => {
-//             try {
-//                 setImage(await testAPI());
-//                 setLoading(false);
-//             } catch (err) {
-//                 setError(error);
-//                 setLoading(false);
-//             }
-//         })();
-//     }, []);
-//     return {
-//         loading,
-//         image,
-//         error,
-//     };
-// }
+export function GetCat(testCat) {
+    const { loading, list, error } = HandleGetList();
+    if (list.name === "testCat") {
+    }
+
+}
+
+export function HandleGetList() {
+    const [loading, setLoading] = useState(true);
+    const [list, setList] = useState([]);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        (async () => {
+            try {
+                setList(await GetBreedList());
+                setLoading(false);
+            } catch (error) {
+                setError(error);
+                setLoading(false);
+            }
+        })();
+    }, []);
+    return {
+        loading,
+        list,
+        error,
+    };
+}
 
 
 //gets all of the cats from the API
-export async function getBreedList() {
+export async function GetBreedList() {
     const url = `https://api.thecatapi.com/v1/breeds`;
     let res = await fetch(url);
-    let catList = await res.json();
-    return catList;
+    let list = await res.json();
+    return list;
 }

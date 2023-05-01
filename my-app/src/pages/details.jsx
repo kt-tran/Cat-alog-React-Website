@@ -1,11 +1,13 @@
 import { Col, Row } from "reactstrap";
 import { FaCat } from "react-icons/fa";
 
-import { getBreedList, useTestAPI } from "../components/api";
+import {  } from "../components/api";
+
+
 
 export default function Details() {
 
-   // console.log(useTestAPI());
+    console.log();
 
     return (
         <div className="container mt-3">
@@ -17,7 +19,8 @@ export default function Details() {
                 </Col>
                 <Col>
                     IMAGE
-                    <FaCat/>
+                    <FaCat />
+
                 </Col>
             </div>
         </div>

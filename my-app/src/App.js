@@ -7,10 +7,13 @@ import {
 } from 'react-router-dom';
 
 import Home from './pages/home';
+import NotFound from './pages/error';
 import Login from './pages/login';
 import Header from './pages/navbar';
 import Details from './pages/details';
 import CatTable from './pages/table';
+import SearchCat from './pages/searchCat';
+import SearchCountry from './pages/searchCountry';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +39,18 @@ const router = createBrowserRouter([
       {
         path: "/cats",
         element: <CatTable />
+      },
+      {
+        path: "/searchCat",
+        element: <SearchCat />
+      },
+      {
+        path: "/searchCountry",
+        element: <SearchCountry />
+      },
+      {
+        path: '*',
+        element: <NotFound />
       }
     ]
   }

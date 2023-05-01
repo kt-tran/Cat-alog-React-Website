@@ -10,7 +10,7 @@ body {
 .hero-image {
   background-image: url("https://w.wallhaven.cc/full/eo/wallhaven-eod6w8.jpg");
   /* The image used */
-  height: 500px;
+  height: 600px;
   background-color: #cccccc;
   /* Used if the image is unavailable */
   background-position: center;
@@ -27,9 +27,17 @@ body {
   background-color: #354F52;
 }
 
-a.nav-link,
+a.darkNav,
 a.navbar-brand {
   color: white;
+}
+
+a.lightNav {
+  color: black;
+}
+
+.dropdown-menu:active {
+  --bs-dropdown-link-active-bg: #52796F;
 }
 
 .navPaw {
@@ -37,5 +45,5 @@ a.navbar-brand {
 }
 
 .catTable {
-  height: 400px;
+  height: 700px;
 }

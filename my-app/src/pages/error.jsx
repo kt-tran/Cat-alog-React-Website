@@ -12,6 +12,7 @@ export default function NotFound() {
             <Link to='/'>Home</Link>
             <Link to='/'>Contact</Link>
             </Row>
+
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Input, Label, Button, Col, FormFeedback, Alert } from "reactstrap";
+import { Form, FormGroup, Input, Label, Button, Col, FormFeedback, Alert, Container } from "reactstrap";
 
 export function Submit(credentials) {
     //This is login code from CAB230 
@@ -72,12 +72,12 @@ export default function Login() {
     }
 
     return (
-        <div className="container mt-5">
-            <div className="container d-flex justify-content-center">
+        <Container className="mt-5">
+            <Container className="d-flex justify-content-center">
                 <h1> Welcome {usernameArray[0]}!</h1>
-            </div>
+            </Container>
             {checkSuccess(loginSuccess)}
-            <div className="container mt-3 w-50 justify-content-center">
+            <Container className="mt-3 w-50 justify-content-center">
                 <Form
                     onSubmit={handleSubmit}>
                     <FormGroup floating>
@@ -121,7 +121,7 @@ export default function Login() {
                         </Col>
                     </FormGroup>
                 </Form>
-            </div>
-        </div>
+            </Container>
+        </Container>
     );
 }

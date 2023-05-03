@@ -63,7 +63,7 @@ export default function Header() {
 
                     <Nav navbar>
                         <NavItem>
-                            <NavLink href="/login">
+                            <NavLink tag={Routing} to="/login" className="darkNav">
                                 Login
                             </NavLink>
                         </NavItem>

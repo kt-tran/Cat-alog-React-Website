@@ -9,11 +9,12 @@ import {
 import Home from './pages/home';
 import NotFound from './pages/error';
 import Login from './pages/login';
-import Header from './pages/navbar';
+import Header from './components/navbar';
 import Details from './pages/details';
 import CatTable from './pages/table';
 import SearchCat from './pages/searchCat';
 import SearchCountry from './pages/searchCountry';
+import Footer from './components/footer';
 
 const router = createBrowserRouter([
   {
@@ -69,7 +70,7 @@ function Root() {
       <Header />
       {/* Outlet is where the active route will be rendered */}
       <Outlet />
-
+      <Footer />
     </div>
   );
 }

@@ -7,6 +7,10 @@ body {
   background-color: white;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .hero-image {
   background-image: url("https://w.wallhaven.cc/full/eo/wallhaven-eod6w8.jpg");
   /* The image used */
@@ -46,4 +50,27 @@ a.lightNav {
 
 .catTable {
   height: 700px;
+}
+
+footer {
+  background-color: #354F52;
+  color: white;
+  margin-top: 40px;
+}
+
+/* .imageStyle {
+  height: 300px;
+} */
+
+.imageStyle img {
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.carousel, .imageStyle img {
+  width:600px;
+  height:400px;
 }

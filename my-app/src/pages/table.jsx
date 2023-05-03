@@ -34,6 +34,7 @@ export default function CatTable() {
     ]);
 
     const { loading, list, error } = HandleGetList();
+    console.log(HandleGetList());
     
     function GetRowData() {
         if (loading === false) {
@@ -54,7 +55,7 @@ export default function CatTable() {
     };
 
     return (
-        <div className="container-fluid px-5 mt-3">
+        <div className="container-fluid px-4 mt-3">
             <Row className="text-center mb-3">
                 <h1> Species of Cats </h1>
             </Row>

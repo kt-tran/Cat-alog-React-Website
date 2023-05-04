@@ -34,10 +34,9 @@ export default function CatTable() {
     ]);
 
     const { loading, list, error } = HandleGetList();
-    console.log(HandleGetList());
-    
+
     function GetRowData() {
-        if (loading === false) {
+        if (loading === false & error === null) {
             return list.map((cat) => (
                 {
                     name: cat.name,
@@ -51,6 +50,12 @@ export default function CatTable() {
                     intelligence: cat.intelligence
                 }
             ))
+        } else if (error !== null) {
+            return (
+                <div>
+                    Uh oh. An error occurred. Please try again later.
+                </div>
+            )
         }
     };
 

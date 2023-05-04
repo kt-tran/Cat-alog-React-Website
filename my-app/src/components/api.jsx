@@ -14,8 +14,15 @@ const testCat = "Abyssinian";
 // }
 
 
-export async function GetCatImage(catID) {
+export async function GetCatImageList(catID) {
     const url = `https://api.thecatapi.com/v1/images/search?breed_ids=${catID}&limit=10`;
+    let res = await fetch(url);
+    let catImageObj = await res.json();
+    return catImageObj;
+}
+
+export async function GetCatImage(catID) {
+    const url = `https://api.thecatapi.com/v1/images/search?breed_ids=${catID}`;
     let res = await fetch(url);
     let catImageObj = await res.json();
     return catImageObj;

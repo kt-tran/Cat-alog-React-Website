@@ -5,7 +5,7 @@ import { ChildfriendlyRenderer } from "../components/childfriendlyRenderer";
 import { HypoallergenicRenderer } from "../components/hypoallergenicRenderer";
 import { EnergeticRenderer } from "../components/energeticRenderer";
 import { IntelligenceRenderer } from "../components/intelligenceRenderer";
-import { HandleGetList, GetCatImage } from "../components/api";
+import { HandleGetList, GetCatImageList } from "../components/api";
 import { CustomCarousel } from '../components/carousel';
 
 
@@ -20,7 +20,7 @@ export default function Details() {
     useEffect(() => {
         (async () => {
             try {
-                setCatImageObj(await GetCatImage("beng"));
+                setCatImageObj(await GetCatImageList(list.id));
                 setImageLoading(false);
             } catch (imageError) {
                 setImageError(imageError);

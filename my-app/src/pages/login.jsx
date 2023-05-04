@@ -74,7 +74,7 @@ export default function Login() {
     return (
         <Container className="mt-5">
             <Container className="d-flex justify-content-center">
-                <h1> Welcome {usernameArray[0]}!</h1>
+                <h1> Welcome{email !== "" ? " " + usernameArray[0] : null}!</h1>
             </Container>
             {checkSuccess(loginSuccess)}
             <Container className="mt-3 w-50 justify-content-center">

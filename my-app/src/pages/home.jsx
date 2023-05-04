@@ -1,8 +1,25 @@
-import { Container } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import { FaPaw } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
+import { GetRandomCat } from "../components/api";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+    const [imageloading, setImageLoading] = useState(true);
+    const [randomCat, setRandomCat] = useState([]);
+    const [imageError, setImageError] = useState(null);
+    useEffect(() => {
+        (async () => {
+            try {
+                setRandomCat(await GetRandomCat());
+                setImageLoading(false);
+            } catch (imageError) {
+                setImageError(imageError);
+                setImageLoading(false);
+            }
+        })();
+    }, []);
+
     return (
         <div>
             <div className="text-center bg-image hero-image">
@@ -24,12 +41,15 @@ export default function Home() {
 
             <Container className="mt-3">
                 <i className="bi bi-globe-asia-australia"></i>
-                <p>This is a cat-alogue of cat species, fun facts, purrfect puns and more. You can search for a favourite fur-friend directly, or browse through each country.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h5 id="frontpage">This is a cat-alogue of cat species, fun facts, purrfect puns and more. You can search for a favourite fur-friend directly, or browse through our cats to find one.</h5>
+                <Row className="mt-3">
+                    <Col id="randomcat">
+                        <img src={randomCat} alt="a cat with text that reads 'hello and welcome'" />
+                    </Col>
+                    This website was made with ReactJS
+                    <Col>
+                    </Col>
+                </Row>
             </Container>
         </div >
     );

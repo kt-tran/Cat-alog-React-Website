@@ -5,15 +5,25 @@ import { useState, useEffect } from 'react';
 const API_KEY = 'live_lrShtLyQ7EGPrE3YexNLwARt62UHXJmKhgYd8HPHFwtR1mP7QJDqsGjj0yTSGZ70';
 const testCat = "Abyssinian";
 
-// export function GetCat(testCat) {
-//     const { loading, list, error } = HandleGetList();
-//     if (list.name === testCat) {
-//         let cat = 
-//     }
+/**
+ * fetches an image of a random cat saying 'hello and welcome'
+ * @returns a cat image
+ */
+export async function GetRandomCat() {
+    const message = "hello and welcome"
+    const url = `https://cataas.com/cat/says/${message}`;
+    let res = await fetch(url);
+    let catImageObj = res.url; //doesn't return json?
+    return catImageObj;
+}
 
-// }
-
-
+export async function GetRandomCatImage() {
+    const url = `https://cataas.com/cat`;
+    let res = await fetch(url);
+    let catImage = res.url;
+    return catImage;
+}
+//fetches a list of 10 cat images for specified breed
 export async function GetCatImageList(catID) {
     const url = `https://api.thecatapi.com/v1/images/search?breed_ids=${catID}&limit=10`;
     let res = await fetch(url);
@@ -21,6 +31,7 @@ export async function GetCatImageList(catID) {
     return catImageObj;
 }
 
+//fetches one image of cat for specified breed
 export async function GetCatImage(catID) {
     const url = `https://api.thecatapi.com/v1/images/search?breed_ids=${catID}`;
     let res = await fetch(url);
@@ -28,6 +39,7 @@ export async function GetCatImage(catID) {
     return catImageObj;
 }
 
+//handles promise returned by GetBreedList()
 export function HandleGetList() {
     const [loading, setLoading] = useState(true);
     const [list, setList] = useState([]);

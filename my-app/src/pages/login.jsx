@@ -2,18 +2,6 @@ import React, { useState } from "react";
 import { Form, FormGroup, Input, Label, Button, Col, FormFeedback, Alert, Container } from "reactstrap";
 
 export function Submit(credentials) {
-    //This is login code from CAB230 
-
-    // const url = `http://sefdb02.qut.edu.au:3001/user/login`;
-
-    // return fetch(url, {
-    //   method: "POST",
-    //   headers: {
-    //     "accept": "application/json", 
-    //     "Content-Type": "application/json"},
-    //   body: JSON.stringify(credentials)
-    // })
-    // .then(res => res.json());
     if (credentials.email !== "" && credentials.password !== "")
         return "Success";
 }
@@ -47,7 +35,6 @@ function checkSuccess(result) {
         return null;
     }
 }
-
 
 export default function Login() {
     const [email, setEmail] = useState("");

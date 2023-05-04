@@ -19,17 +19,18 @@ export default function CatTable() {
     }
 
     const navigate = useNavigate();
+    const paginationSize = 14;
 
     const [rowData, setRowData] = useState([]);
     const [columnDefs, setColumnDefs] = useState([
         { headerName: "Name", field: "name", filter: 'agTextColumnFilter', filterParams: textCustomFilterParams },
         { headerName: "Country", field: "country", filter: 'agTextColumnFilter', filterParams: textCustomFilterParams },
-        { headerName: "Weight Range (kg)", field: "weight" },
-        { headerName: "Average Lifespan (years)", field: "lifespan" },
+        { headerName: "Weight Range (kg)", field: "weight", sortable: true },
+        { headerName: "Average Lifespan (years)", field: "lifespan", sortable: true },
         { headerName: "Intelligence", field: "intelligence", cellRenderer: IntelligenceRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams },
         { headerName: "Affection Meter", field: "affection", cellRenderer: AffectionRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams },
         { headerName: "Energy Meter", field: "energy", cellRenderer: EnergeticRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams },
-        { headerName: "Hypoallergenic", field: "hypoallergenic", cellRenderer: HypoallergenicRenderer },
+        { headerName: "Hypoallergenic", field: "hypoallergenic", cellRenderer: HypoallergenicRenderer, sortable: true },
         { headerName: "Childfriendly", field: "childfriendly", cellRenderer: ChildfriendlyRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams },
     ]);
 
@@ -70,6 +71,7 @@ export default function CatTable() {
                         columnDefs={columnDefs}
                         rowData={GetRowData()}
                         pagination={true}
+                        paginationPageSize={paginationSize}
                         onRowClicked={(
                             row) => {
                             console.log("row clicked", row.data.name)

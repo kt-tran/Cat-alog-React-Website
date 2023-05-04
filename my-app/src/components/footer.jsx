@@ -8,7 +8,6 @@ import { useEffect } from "react";
 
 export default function Footer() {
     const { loading, response, error } = HandleGetFact();
-    console.log(response);
     return (
         <div>
             <footer className="d-flex justify-content-between align-items-center py-2 border-top">
@@ -25,8 +24,8 @@ export default function Footer() {
                 </Col>
                 <Col className="col-md-2 justify-content-end list-unstyled d-flex">
                     <li className="ms-3"><NavLink className="text-muted" to="/itemtest"><InfoIcon /></NavLink></li>
-                    <li className="ms-3"><NavLink className="text-muted" to="#"><InfoIcon /></NavLink></li>
-                    <li className="ms-3"><NavLink className="text-muted" to="#"><InfoIcon /></NavLink></li>
+                    <li className="ms-3"><NavLink className="text-muted" to="/contactUs"><InfoIcon /></NavLink></li>
+                    <li className="ms-3"><NavLink className="text-muted" to="/aboutUs"><InfoIcon /></NavLink></li>
                 </Col>
             </footer>
         </div>

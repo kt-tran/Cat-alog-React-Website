@@ -78,3 +78,26 @@ footer {
 .card {
   width: 25rem;
 }
+
+#frontpage {
+  font-weight: normal;
+}
+
+#randomcat img{
+  width:300px;
+  height:200px;
+}
+
+.mission {
+  background-color: #84A98C;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.aboutCatImage {
+  width: 628px;
+  height: 532px;
+  object-fit: fill;
+}

@@ -15,6 +15,8 @@ import CatTable from './pages/table';
 import SearchCat from './pages/searchCat';
 import SearchCountry from './pages/searchCountry';
 import Footer from './components/footer';
+import ContactUs from './pages/contact';
+import AboutUs from './pages/about';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
       {
         path: "/searchCountry",
         element: <SearchCountry />
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUs />
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs />
       },
       {
         path: '*',

@@ -1,31 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardBody, CardSubtitle, CardTitle, Container, Col, Row } from "reactstrap";
 import { HandleGetList, GetCatImage } from "../components/api";
+import Select from 'react-select'
 
-export default function SearchCat() {
+export default function Search() {
     const { loading, list, error } = HandleGetList();
     const [query, setQuery] = useState("")
 
     const [imageloading, setImageLoading] = useState(true);
     const [catImageObj, setCatImageObj] = useState([]);
     const [imageError, setImageError] = useState(null);
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ]
 
     return (
         <div>
-            <Container className="text-center mt-2">
+            <Container className="text-center mt-3">
                 <h1>Search for a cat</h1>
             </Container>
 
             <Container>
                 <input placeholder="Enter a cat species" onChange={event => setQuery(event.target.value)} />
+                <Select options={options} />
             </Container>
 
             <Container className="d-flex">
-                <Row>
+                <Row className="row-cols-auto">
                     {list.filter(card => {
                         if (query === '') {
                             return card;
-                        }
+                        } else if (card.name.includes(query))
+                            return card;
                     }).map((cat) => (
                         // useEffect(() => {
                         //     (async () => {
@@ -39,12 +47,11 @@ export default function SearchCat() {
                         //     })();
                         // }, [])
                         // // console.log(catImageObj);
-                        < Col sm="4" className="my-3" >
+                        < Col className="my-3" >
                             <Card>
                                 <img
-                                    alt="Picture of a cat"
+                                    alt="a cat"
                                     src="https://picsum.photos/300/200"
-                                    style={{ height: "200px", width: "400px" }}
                                 />
                                 <CardBody>
                                     <CardTitle key={cat.id} tag="h5">{cat.name}</CardTitle>

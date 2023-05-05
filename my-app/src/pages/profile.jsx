@@ -1,9 +1,9 @@
 import { Container, Row, Col } from "reactstrap";
 
-export default function AboutUs() {
+export default function Profile() {
     return (
         <Container className="mt-4">
-            <h1 className="text-center">About Us</h1>
+            <h1 className="text-center">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
             <Row>
                 <Col className="p-3">
                     <h5 className="p-3 mission text-right">Mission Statement</h5>

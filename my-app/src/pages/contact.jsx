@@ -8,13 +8,9 @@ export default function ContactUs() {
     const [feedback, setFeedback] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
-    const [modal, setModal] = useState(false);
-
-    const toggle = () => setModal(!modal);
-
     function handleSubmit(e) {
         if (firstName && lastName && email && feedback) {
-            alert('You have submitted successfully!')
+            alert('Thank you for your inquiry :) We aim to respond to you as soon as we can.')
         } else {
             e.preventDefault();
             setSubmitted(true);
@@ -24,22 +20,15 @@ export default function ContactUs() {
     return (
         <Container className="mt-3 ">
 
-            <Modal isOpen={modal} toggle={toggle}>
-                <ModalHeader>
-                    You submitted successfully!
-                </ModalHeader>
-                <ModalFooter>
-                    <Button color="primary" onClick={toggle}>
-                        Ok
-                    </Button>
-                </ModalFooter>
-            </Modal>
-
             <Container className="d-flex justify-content-center">
                 <h1>Contact Us</h1>
             </Container>
 
-            <Container className="mt-3 w-50 justify-content-center">
+            <Container className="d-flex justify-content-center">
+                <p> Have a question? We're happy to answer.</p>
+            </Container>
+
+            <Container className="mt-1 mb-5 pb-3 w-50 justify-content-center">
                 <Form onSubmit={handleSubmit}>
                     <Row>
                         <Col>
@@ -76,66 +65,71 @@ export default function ContactUs() {
                         </Col>
                     </Row>
 
-                    <FormGroup floating>
-                        <Input
-                            id="email"
-                            invalid={!email && submitted}
-                            name="Email"
-                            placeholder="Email"
-                            type="email"
-                            onChange={(event) => {
-                                setEmail(event.target.value);
-                            }}
-                        />
-                        <Label for="email">
-                            Email Address
-                        </Label>
-                    </FormGroup>
+                    <Row>
+                        <Col>
+                            <FormGroup floating>
+                                <Input
+                                    id="email"
+                                    invalid={!email && submitted}
+                                    name="Email"
+                                    placeholder="Email"
+                                    type="email"
+                                    onChange={(event) => {
+                                        setEmail(event.target.value);
+                                    }}
+                                />
+                                <Label for="email">
+                                    Email Address
+                                </Label>
+                            </FormGroup>
 
-                    <FormGroup>
-                        <Input
-                            rows="5"
-                            id="response"
-                            invalid={!feedback && submitted}
-                            name="Response"
-                            placeholder="Type your feedback here..."
-                            type="textarea"
-                            onChange={(event) => {
-                                setFeedback(event.target.value);
-                            }}
-                        />
-                    </FormGroup>
-
-                    <Button color="primary">
-                        Submit
-                    </Button>
+                            <FormGroup>
+                                <Input
+                                    rows="5"
+                                    id="response"
+                                    invalid={!feedback && submitted}
+                                    name="Response"
+                                    placeholder="Type your feedback here..."
+                                    type="textarea"
+                                    onChange={(event) => {
+                                        setFeedback(event.target.value);
+                                    }}
+                                />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="text-center">
+                            <Button color="primary">
+                                Submit
+                            </Button>
+                        </Col>
+                    </Row>
                 </Form>
                 <hr></hr>
-                <Container className="d-flex justify-content-center pb-2">
-                    <h1>Alternatively</h1>
-                </Container>
-
             </Container>
-            <Row>
-                <Col>
-                    <p>Phone us @ 1800 123 456</p>
-                    <ul>
-                        <li>Monday: 9AM - 5PM</li>
-                        <li>Tuesday: 9AM - 5PM</li>
-                        <li>Wednesday: 9AM - 5PM</li>
-                        <li>Thursday: 9AM - 5PM</li>
-                        <li>Friday: 9AM - 5PM</li>
-                    </ul>
-                </Col>
+            <Container className="pb-2">
+                <Row>
+                    <Col>
+                        <p>Phone us @ 1800 123 456</p>
+                        <ul>
+                            <li>Monday: 9AM - 5PM</li>
+                            <li>Tuesday: 9AM - 5PM</li>
+                            <li>Wednesday: 9AM - 5PM</li>
+                            <li>Thursday: 9AM - 5PM</li>
+                            <li>Friday: 9AM - 5PM</li>
+                        </ul>
+                    </Col>
 
-                <Col className="d-flex justify-content-center pb-2">
-                    <p>Mail us @ 123 Nowhere St, NotReal, 1234.</p>
-                </Col>
+                    <Col className="d-flex justify-content-center pb-2">
+                        <p>Mail us @ 123 Nowhere St, NotReal, 1234.</p>
+                    </Col>
 
-                <Col className="d-flex justify-content-end pb-2">
-                    <p>Email us directly @ example@email.com</p>
-                </Col>
-            </Row>
+                    <Col className="d-flex justify-content-end pb-2">
+                        <p>Email us directly @ example@email.com</p>
+                    </Col>
+                </Row>
+            </Container>
         </Container>
     )
 }

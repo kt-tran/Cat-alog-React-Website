@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { Container, Col } from "reactstrap";
 import InfoIcon from '@mui/icons-material/Info';
+import HelpIcon from '@mui/icons-material/Help';
 import { FaPaw } from "react-icons/fa";
-import { HandleGetFact, GetRandomCatFact } from './api';
-import { useEffect } from "react";
+import { HandleGetFact } from './api';
 
 
 export default function Footer() {
@@ -19,13 +19,14 @@ export default function Footer() {
                 </Col>
                 <Col className="col-md-7 flex-grow-1 active">
                     <Container>
-                        <p>Fun Fact: {response.fact}</p>
+                        {loading === true || error !== null ?
+                            <p></p> :
+                            <p>Fun Fact: {response.fact}</p>}
                     </Container>
                 </Col>
-                <Col className="col-md-2 justify-content-end list-unstyled d-flex">
-                    <li className="ms-3"><NavLink className="text-muted" to="/itemtest"><InfoIcon /></NavLink></li>
-                    <li className="ms-3"><NavLink className="text-muted" to="/contactUs"><InfoIcon /></NavLink></li>
-                    <li className="ms-3"><NavLink className="text-muted" to="/aboutUs"><InfoIcon /></NavLink></li>
+                <Col className="pe-2 col-md-2 justify-content-end list-unstyled d-flex">
+                    <li className="ms-3"><NavLink className="text-white" to="/contactUs"><HelpIcon /></NavLink></li>
+                    <li className="ms-3"><NavLink className="text-white" to="/aboutUs"><InfoIcon /></NavLink></li>
                 </Col>
             </footer>
         </div>

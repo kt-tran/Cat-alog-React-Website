@@ -12,11 +12,12 @@ import Login from './pages/login';
 import Header from './components/navbar';
 import Details from './pages/details';
 import CatTable from './pages/table';
-import SearchCat from './pages/searchCat';
-import SearchCountry from './pages/searchCountry';
+import Search from './pages/search';
 import Footer from './components/footer';
 import ContactUs from './pages/contact';
 import AboutUs from './pages/about';
+import Dashboard from './pages/dashboard';
+import Profile from './pages/profile';
 
 const router = createBrowserRouter([
   {
@@ -44,12 +45,8 @@ const router = createBrowserRouter([
         element: <CatTable />
       },
       {
-        path: "/searchCat",
-        element: <SearchCat />
-      },
-      {
-        path: "/searchCountry",
-        element: <SearchCountry />
+        path: "/search",
+        element: <Search/>
       },
       {
         path: "/contactUs",
@@ -62,6 +59,14 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <NotFound />
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard />
+      },
+      {
+        path: '/profile',
+        element: <Profile />
       }
     ]
   }

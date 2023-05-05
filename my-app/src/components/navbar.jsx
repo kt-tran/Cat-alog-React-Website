@@ -7,7 +7,7 @@ import {
     Nav,
     NavLink,
     NavItem,
-    UncontrolledDropdown,
+    Dropdown,
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
@@ -26,6 +26,10 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const toggle2 = () => setDropdownOpen((prevState) => !prevState);
+
+
     return (
         <div>
             <Navbar className="nav-style" expand="md">
@@ -37,36 +41,39 @@ export default function Header() {
                             <NavLink tag={Routing} to="/cats" className="darkNav">Browse</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink tag={Routing} to="/itemtest" className="darkNav">Random</NavLink>
+                            <NavLink tag={Routing} to="/" className="darkNav">Random</NavLink>
                         </NavItem>
-                        <UncontrolledDropdown nav inNavbar>
+                        <NavItem>
+                            <NavLink tag={Routing} to="/search" className="darkNav">Search</NavLink>
+                        </NavItem>
+                    </Nav>
+
+                    <Nav navbar>
+                        <Dropdown isOpen={dropdownOpen} toggle={toggle2} nav>
                             <DropdownToggle nav caret className="darkNav">
-                                Search
+                                Account
                             </DropdownToggle>
-                            <DropdownMenu end>
+                            <DropdownMenu>
                                 <DropdownItem className="lightNav" >
-                                    <NavLink tag={Routing} to="/searchCat" className="lightNav">
-                                        For a cat
+                                    <NavLink tag={Routing} to="/login" className="lightNav">
+                                        Login
                                     </NavLink>
                                 </DropdownItem>
 
                                 <DropdownItem divider />
 
                                 <DropdownItem>
-                                    <NavLink tag={Routing} to="/searchCountry" className="lightNav">
-                                        For a country
+                                    <NavLink tag={Routing} to="/dashboard" className="lightNav">
+                                        Dashboard
+                                    </NavLink>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <NavLink tag={Routing} to="/profile" className="lightNav">
+                                        Profile
                                     </NavLink>
                                 </DropdownItem>
                             </DropdownMenu>
-                        </UncontrolledDropdown>
-                    </Nav>
-
-                    <Nav navbar>
-                        <NavItem>
-                            <NavLink tag={Routing} to="/login" className="darkNav">
-                                Login
-                            </NavLink>
-                        </NavItem>
+                        </Dropdown>
                     </Nav>
 
                 </Collapse>

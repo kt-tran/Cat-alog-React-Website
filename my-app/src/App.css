@@ -13,14 +13,11 @@ body {
 
 .hero-image {
   background-image: url("https://w.wallhaven.cc/full/eo/wallhaven-eod6w8.jpg");
-  /* The image used */
   height: 600px;
   background-color: #cccccc;
-  /* Used if the image is unavailable */
   background-position: center;
   background-repeat: no-repeat;
   background-size: 2500px;
-  /* Resize the background image to cover the entire container */
 }
 
 .hero-text {
@@ -49,7 +46,8 @@ a.lightNav {
 }
 
 .catTable {
-  height: 700px;
+  height: 627px;
+  width: 1805px;
 }
 
 footer {
@@ -58,21 +56,15 @@ footer {
   margin-top: 40px;
 }
 
-/* .imageStyle {
-  height: 300px;
-} */
-
 .imageStyle img {
-  object-fit: cover;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+  object-fit: scale-down;
+  background: rgba(0, 0, 0, 0.795);
 }
 
-.carousel, .imageStyle img {
-  width:600px;
-  height:400px;
+.carousel,
+.imageStyle img {
+  width: 650px;
+  height: 400px;
 }
 
 .card {
@@ -83,9 +75,9 @@ footer {
   font-weight: normal;
 }
 
-#randomcat img{
-  width:300px;
-  height:200px;
+#randomcat img {
+  width: 400px;
+  height: 250px;
 }
 
 .mission {
@@ -99,5 +91,18 @@ footer {
 .aboutCatImage {
   width: 628px;
   height: 532px;
-  object-fit: fill;
+  object-fit: cover;
+}
+
+.badge {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.menu {
+  color: #84A98C;
+}
+
+.homeCard {
+  width: 15rem;
 }

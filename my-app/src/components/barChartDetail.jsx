@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -8,7 +9,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+
 
 ChartJS.register(
     CategoryScale,
@@ -27,12 +28,22 @@ const options = {
         },
         title: {
             display: true,
-            text: 'Cat Temperament',
+            text: 'Qualities',
         },
     },
+    scales: {
+        y: {
+            max: 5,
+            min: 0,
+            ticks: {
+                stepSize: 1
+            }
+        }
+    }
 };
 
-const labels = ['Affection', 'Child-Friendly', 'Energy', 'Intelligence'];
+const labels = ['Adaptability', 'Affection', 'Child Friendly', 'Dog Friendly', 'Energy', 'Grooming Ability', 'Health issues', 'Intelligence', 'Shedding level',
+    'Social Needs', 'Stranger Friendly', 'Vocal'];
 
 export default function BarChartDetails(props) {
     const chartRef = useRef(null);
@@ -42,26 +53,36 @@ export default function BarChartDetails(props) {
 
     const catData =
     {
+        adaptability: props.cat.adaptability,
         affection: props.cat.affection_level,
         childFriendliness: props.cat.child_friendly,
+        dogFriendliness: props.cat.dog_friendly,
         energy: props.cat.energy_level,
+        grooming: props.cat.grooming,
+        health_issues: props.cat.health_issues,
         intelligence: props.cat.intelligence,
+        shedding_level: props.cat.shedding_level,
+        social_needs: props.cat.social_needs,
+        stranger_friendly: props.cat.stranger_friendly,
+        vocalisation: props.cat.vocalisation
     }
 
-    const data = {
-        labels,
-        // chartData
-        datasets: [
-            {
-                label: 'Cat Temperament',
-                data: [catData.affection, catData.childFriendliness, catData.energy, catData.intelligence,],
-            },
-        ],
-    };
     
     useEffect(() => {
         const chart = chartRef.current;
-        console.log(chart);
+        const data = {
+            labels,
+            // chartData
+            datasets: [
+                {
+                    label: 'Qualities',
+                    data: [catData.adaptability, catData.affection, catData.childFriendliness, catData.dogFriendliness, catData.energy, catData.grooming, catData.health_issues,
+                    catData.intelligence, catData.shedding_level, catData.social_needs, catData.stranger_friendly, catData.vocalisation],
+                },
+            ],
+        };
+
+        console.log('here');
 
         if (!chart) {
             return;
@@ -75,17 +96,30 @@ export default function BarChartDetails(props) {
             }))
         }
         setChartData(chartData);
-    }, [])
+    },[
+        catData.adaptability, 
+        catData.affection, 
+        catData.childFriendliness, 
+        catData.dogFriendliness, 
+        catData.energy, 
+        catData.grooming, 
+        catData.health_issues,
+        catData.intelligence, 
+        catData.shedding_level, 
+        catData.social_needs, 
+        catData.stranger_friendly, 
+        catData.vocalisation
+    ])
 
 
     function createBackgroundGradient(ctx, chartArea) {
         const gradientBg = ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0)
 
         gradientBg.addColorStop(0, '#CAD2C5');
-        gradientBg.addColorStop(0.2, '#84A98C');
-        gradientBg.addColorStop(0.4, '#52796F');
-        gradientBg.addColorStop(0.6, '#354F52');
-        gradientBg.addColorStop(0.8, '#2F3E46');
+        gradientBg.addColorStop(0.25, '#84A98C');
+        gradientBg.addColorStop(0.5, '#52796F');
+        gradientBg.addColorStop(0.75, '#354F52');
+        gradientBg.addColorStop(1, '#2F3E46');
 
         return gradientBg;
     }

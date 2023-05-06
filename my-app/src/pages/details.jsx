@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row, Container } from "reactstrap";
 import { useSearchParams } from "react-router-dom";
-import { AffectionRenderer } from "../components/affectionRenderer";
-import { ChildfriendlyRenderer } from "../components/childfriendlyRenderer";
-import { HypoallergenicRenderer } from "../components/hypoallergenicRenderer";
-import { EnergeticRenderer } from "../components/energeticRenderer";
-import { IntelligenceRenderer } from "../components/intelligenceRenderer";
 import { HandleGetList, GetCatImageList } from "../components/api";
 import { CustomCarousel } from '../components/carousel';
 import { BadgesDetail } from '../components/badgesDetail';
-import BarChartDetails, { BarChart } from '../components/barChartDetail';
+import BarChartDetails from '../components/barChartDetail';
 
 export default function Details() {
     const { loading, list, error } = HandleGetList();
-    const [ searchParams ] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const id = searchParams.get("id");
     let cat = list.find((list) => list.id === id);
 
@@ -31,53 +26,18 @@ export default function Details() {
                 setImageLoading(false);
             }
         })();
-    }, []);
+    }, [id]);
 
-    // const Data = {
-    //     labels: ['Red', 'Orange', 'Blue'],
-    //     // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
-    //     datasets: [
-    //         {
-    //           label: 'Popularity of colours',
-    //           data: [55, 23, 96],
-    //           // you can set indiviual colors for each bar
-    //           backgroundColor: [
-    //             'rgba(255, 255, 255, 0.6)',
-    //             'rgba(255, 255, 255, 0.6)',
-    //             'rgba(255, 255, 255, 0.6)'
-    //           ],
-    //           borderWidth: 1,
-    //         }
-    //     ]
-    // }
-    // const [chartData, setChartData] = useState({
-    //     labels: Data.map((data) => data.year), 
-    //     datasets: [
-    //       {
-    //         label: "Users Gained ",
-    //         data: Data.map((data) => data.userGain),
-    //         backgroundColor: [
-    //           "rgba(75,192,192,1)",
-    //           "#ecf0f1",
-    //           "#50AF95",
-    //           "#f3ba2f",
-    //           "#2a71d0"
-    //         ],
-    //         borderColor: "black",
-    //         borderWidth: 2
-    //       }
-    //     ]
-    // });
 
     if (loading || imageLoading) {
         return (
             <Container className="my-5 pb-5">
                 <h1 className="text-center mb-5 pb-5">Loading...</h1>
                 <Container className="text-center mb-3">
-                    <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" />
+                    <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="a loading icon is spinning" />
                 </Container>
                 <Container className="text-end">
-                    <img src="https://thumbs.gfycat.com/AnotherSimilarHoiho-max-1mb.gif" />
+                    <img src="https://thumbs.gfycat.com/AnotherSimilarHoiho-max-1mb.gif" alt="a cat drawn in black pencil walks along before stopping, yawning and falling over" />
                 </Container>
             </Container>);
     } else if (error || imageError) {
@@ -85,7 +45,7 @@ export default function Details() {
             <Container className="my-5 pb-5">
                 <h1 className="text-center mb-5 pb-5">An error has occurred. Please try again later.</h1>
                 <Container className="text-center mb-5 pb-5">
-                    <img src="https://cliply.co/wp-content/uploads/2021/09/142109670_SAD_CAT_400.gif" />
+                    <img src="https://cliply.co/wp-content/uploads/2021/09/142109670_SAD_CAT_400.gif" alt="a drawn pale pink cat is frowning" />
                 </Container>
             </Container>
         );
@@ -94,44 +54,55 @@ export default function Details() {
             <Container className="mt-3">
                 <Row>
                     <Col>
-                        <h1>{cat.name}</h1>
-                        {cat.alt_names.trim().length === 0 || cat.alt_names === undefined ? console.log(cat.alt_names) : <div> Also known as {cat.alt_names} </div>}
-                    </Col>
-                    <Col className="justify-content-center d-flex align-items-center">
-                        <BadgesDetail cat={cat} />
+                        <h1 className="text-center">{cat.name}</h1>
+                        {cat.alt_names === undefined || cat.alt_names.trim().length === 0 ? null : <div> Also known as {cat.alt_names} </div>}
                     </Col>
                 </Row>
-                <Container className="mt-3">
-                    <Row>
-                        <Col className='ps-0'>
-                            {/* <img className="imageStyle" src={catImageObj[0].url}/> */}
-                            <CustomCarousel imagelist={catImageObj} className="imageStyle"></CustomCarousel>
-                        </Col>
-                        <Col>
-                            {/* <BarChart chartData={chartData} /> */}
-                            <div className="container"> {cat.description} </div>
+                <Row className="mt-3">
+                    <Col className='ps-0'>
+                        <CustomCarousel imagelist={catImageObj} className="imageStyle"></CustomCarousel>
+                    </Col>
+                    <Col>
+                        <Row>
+                            <Col className="justify-content-center d-flex align-items-center mb-3">
+                                <BadgesDetail cat={cat} />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Row>Common traits: {cat.temperament}.</Row>
+                                <Row className="mt-3"> {cat.description} </Row>
 
-                            {/* <div>
-                                Affection: <AffectionRenderer value={cat.affection_level} />
-                            </div>
-                            <div>
-                                Child-friendly: <ChildfriendlyRenderer value={cat.child_friendly} />
-                            </div>
-                            <div>
-                                Energy: <EnergeticRenderer value={cat.energy_level} />
-                            </div>
-                            <div>
-                                Intelligence: <IntelligenceRenderer value={cat.intelligence} />
-                            </div>
-                            <div>
-                                Hypoallergenic: <HypoallergenicRenderer value={cat.hypoallergenic} />
-                            </div> */}
+                                <Row className="mt-3">The average {cat.name} weighs {cat.weight.metric} kilograms.</Row>
+                                <Row>They typically live for {cat.life_span} years.</Row>
+                                <Row className="mt-3">Breed origin: {cat.origin}</Row>
+                                <Row className="mt-5"> More information can be found via the following links:</Row>
+                                <Row>
+                                    <Col className="text-center">
+                                        <Row>
+                                            {cat.vcahospitals_url === undefined || cat.vcahospitals_url.trim().length === 0 ? null : <a href={cat.vcahospitals_url}>VCA Animal Hospitals</a>}
+                                        </Row>
+                                        <Row>
+                                            {cat.wikipedia_url === undefined || cat.wikipedia_url.trim().length === 0 ? null : <a href={cat.wikipedia_url}>Wikipedia</a>}
+                                        </Row>
+                                    </Col>
+                                    <Col className="text-center">
+                                        <Row>
+                                            {cat.cfa_url === undefined || cat.cfa_url.trim().length === 0 ? null : <a href={cat.cfa_url}>The Cat Fanciers' Association</a>}
+                                        </Row>
+                                        <Row>
+                                            {cat.vetstreet_url === undefined || cat.vetstreet_url.trim().length === 0 ? null : <a href={cat.vetstreet_url}>Vet Street</a>}
+                                        </Row>
+                                    </Col>
+                                </Row>
 
-                            <BarChartDetails cat={cat}/>
-
-                        </Col>
-                    </Row>
-                </Container>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+                <Row className="mx-3 my-3">
+                    <BarChartDetails cat={cat} />
+                </Row>
             </Container>
         );
     }

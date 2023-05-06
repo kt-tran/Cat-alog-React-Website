@@ -76,7 +76,6 @@ export default function CatTable() {
                             paginationAutoPageSize={true}
                             onRowClicked={(
                                 row) => {
-                                console.log("row clicked", row.data.id)
                                 navigate(`/itemtest/?id=${row.data.id}`);
                             }}
                         />

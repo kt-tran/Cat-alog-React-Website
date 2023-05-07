@@ -59,7 +59,7 @@ export default function Login() {
     }
 
     return (
-        <Container className="mt-5">
+        <Container className="mt-5 login">
             <Container className="d-flex justify-content-center">
                 <h1> Welcome{email !== "" ? " " + usernameArray[0] : null}!</h1>
             </Container>

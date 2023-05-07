@@ -34,25 +34,21 @@ export default function Search() {
 
     const handleChangeCountry = (selectedOption) => {
         let res = []
-
         list.forEach(cat => {
             if (cat.origin === selectedOption.value) {
                 res.push(cat);
             }
         })
-
         setSearchRes(res);
     }
 
     const handleChangeCat = (selectedOption) => {
         let res = []
-
         list.forEach(cat => {
             if (cat.name === selectedOption.value) {
                 res.push(cat);
             }
         })
-
         setSearchRes(res);
     }
 

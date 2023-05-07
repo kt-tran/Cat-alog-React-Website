@@ -1,4 +1,5 @@
-import { Container, Row, Col, Table, NavLink, Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+import { Container, Row, Col, Table, Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+import { NavLink } from "react-router-dom";
 
 export default function Profile() {
     return (

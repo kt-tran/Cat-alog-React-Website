@@ -66,18 +66,15 @@ export default function Home() {
                         favourite fur-friend directly, or browse through our cats to find one. We have information on
                         a total of 67 breeds.</h5>
                     <Row className="mt-3">
-                        <Col id="randomcat">
+                        <Col className="col-12 col-sm-12 col-md-12 col-lg-9" id="randomcat">
                             {imageLoading === false || imageError === null ?
                                 <img src={randomCat} alt="a cat in the background with text in front that reads 'hello and welcome'" /> :
                                 <p>askjd</p>
                             }
                         </Col>
-                        <Col className="d-flex align-items-center justify-content-end">
+                        <Col className="col-12 col-sm-12 col-md-12 col-lg-3 mt-3">
                             <h2>I want to...</h2>
-                        </Col>
-                        <Col className=" d-flex align-items-center justify-content-start">
-                            <Card className="homeCard"
-                            >
+                            <Card className="homeCard">
                                 <ListGroup flush>
                                     <ListGroupItem>
                                         <NavLink className="menu" to="/login">Login</NavLink>

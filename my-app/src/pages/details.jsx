@@ -59,10 +59,10 @@ export default function Details() {
                     </Col>
                 </Row>
                 <Row className="mt-3">
-                    <Col className='ps-0'>
+                    <Col className='col-12 col-sm-12 col-md-6 ps-0'>
                         <CustomCarousel imagelist={catImageObj} className="imageStyle"></CustomCarousel>
                     </Col>
-                    <Col className='ps-4'>
+                    <Col className='col-12 col-sm-12 col-md-6 ps-4'>
                         <Row>
                             <Col className="justify-content-center d-flex align-items-center mb-3">
                                 <BadgesDetail cat={cat} />

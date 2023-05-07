@@ -10,7 +10,7 @@ export default function NotFound() {
             <Row className="mt-3 text-center">
                 <p>Please try these links instead:</p>
                 <Link to='/'>Home</Link>
-                <Link to='/'>Contact</Link>
+                <Link to='/contact'>Contact</Link>
             </Row>
 
         </div>

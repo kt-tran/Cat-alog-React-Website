@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { GetCatimagelist } from '../utilities/api';
 import {
     Carousel,
     CarouselItem,
     CarouselControl,
     CarouselIndicators,
-    CarouselCaption,
 } from 'reactstrap';
 
 export function CustomCarousel(args) {

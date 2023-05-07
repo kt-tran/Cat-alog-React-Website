@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card, ListGroup, ListGroupItem, CardHeader } from "reactstrap";
+import { Container, Row, Col, Card, ListGroup, ListGroupItem } from "reactstrap";
 import { FaPaw } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { GetRandomCat } from "../utilities/api";
@@ -25,10 +25,10 @@ export default function Home() {
             <Container className="my-5 pb-5">
                 <h1 className="text-center mb-5 pb-5">Loading...</h1>
                 <Container className="text-center mb-3">
-                    <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" />
+                    <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt=""/>
                 </Container>
                 <Container className="text-end">
-                    <img src="https://thumbs.gfycat.com/AnotherSimilarHoiho-max-1mb.gif" />
+                    <img src="https://thumbs.gfycat.com/AnotherSimilarHoiho-max-1mb.gif" alt="a cat drawn in black pencil walks along before stopping, yawning and falling over"/>
                 </Container>
             </Container>);
     } else if (imageError) {
@@ -36,7 +36,7 @@ export default function Home() {
             <Container className="my-5 pb-5">
                 <h1 className="text-center mb-5 pb-5">An error has occurred. Please try again later.</h1>
                 <Container className="text-center mb-5 pb-5">
-                    <img src="https://cliply.co/wp-content/uploads/2021/09/142109670_SAD_CAT_400.gif" />
+                    <img src="https://cliply.co/wp-content/uploads/2021/09/142109670_SAD_CAT_400.gif" alt="a drawn pale pink cat is frowning" />
                 </Container>
             </Container>
         );

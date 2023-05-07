@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GetCatimagelist } from './api';
+import { GetCatimagelist } from '../utilities/api';
 import {
     Carousel,
     CarouselItem,

@@ -47,7 +47,8 @@ a.lightNav {
 
 .catTable {
   height: 627px;
-  width: 1805px;
+  width: 95%;
+  /* width: 1805px; */
 }
 
 footer {

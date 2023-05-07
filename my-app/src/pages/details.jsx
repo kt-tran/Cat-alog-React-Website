@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row, Container } from "reactstrap";
 import { useSearchParams } from "react-router-dom";
-import { HandleGetList, GetCatImageList } from "../components/api";
+import { HandleGetList, GetCatImageList } from "../utilities/api";
 import { CustomCarousel } from '../components/carousel';
 import { BadgesDetail } from '../components/badgesDetail';
 import BarChartDetails from '../components/barChartDetail';

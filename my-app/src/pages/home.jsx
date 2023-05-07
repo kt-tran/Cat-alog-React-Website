@@ -1,7 +1,7 @@
 import { Container, Row, Col, Card, ListGroup, ListGroupItem, CardHeader } from "reactstrap";
 import { FaPaw } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
-import { GetRandomCat } from "../components/api";
+import { GetRandomCat } from "../utilities/api";
 import { useState, useEffect } from "react";
 
 export default function Home() {

@@ -2,7 +2,7 @@ import { AgGridReact } from "ag-grid-react";
 import { Row, Col } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import { HandleGetList } from "../components/api";
+import { HandleGetList } from "../utilities/api";
 import { AffectionRenderer } from "../components/affectionRenderer";
 import { ChildfriendlyRenderer } from "../components/childfriendlyRenderer";
 import { HypoallergenicRenderer } from "../components/hypoallergenicRenderer";
@@ -19,18 +19,18 @@ export default function CatTable() {
     }
 
     const navigate = useNavigate();
-    
+
     const [rowData, setRowData] = useState([]);
     const [columnDefs, setColumnDefs] = useState([
-        { headerName: "Name", field: "name", filter: 'agTextColumnFilter', filterParams: textCustomFilterParams, sortable: true  },
-        { headerName: "Country", field: "country", filter: 'agTextColumnFilter', filterParams: textCustomFilterParams, sortable: true  },
+        { headerName: "Name", field: "name", filter: 'agTextColumnFilter', filterParams: textCustomFilterParams, sortable: true },
+        { headerName: "Country", field: "country", filter: 'agTextColumnFilter', filterParams: textCustomFilterParams, sortable: true },
         { headerName: "Weight Range (kg)", field: "weight", sortable: true },
         { headerName: "Average Lifespan (years)", field: "lifespan", sortable: true },
         { headerName: "Intelligence", field: "intelligence", cellRenderer: IntelligenceRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams, sortable: true },
-        { headerName: "Affection Meter", field: "affection", cellRenderer: AffectionRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams, sortable: true  },
-        { headerName: "Energy Meter", field: "energy", cellRenderer: EnergeticRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams, sortable: true  },
+        { headerName: "Affection Meter", field: "affection", cellRenderer: AffectionRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams, sortable: true },
+        { headerName: "Energy Meter", field: "energy", cellRenderer: EnergeticRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams, sortable: true },
         { headerName: "Hypoallergenic", field: "hypoallergenic", cellRenderer: HypoallergenicRenderer, sortable: true },
-        { headerName: "Childfriendly", field: "childfriendly", cellRenderer: ChildfriendlyRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams, sortable: true  },
+        { headerName: "Childfriendly", field: "childfriendly", cellRenderer: ChildfriendlyRenderer, filter: 'agNumberColumnFilter', filterParams: numCustomFilterParams, sortable: true },
     ]);
 
     const { loading, list, error } = HandleGetList();
@@ -61,7 +61,7 @@ export default function CatTable() {
     };
 
     return (
-        <div className="container-fluid px-4 mt-3">
+        <div className="container-fluid mx-5 px-4 mt-3">
             <Row className="text-center mb-3">
                 <h1> Species of Cats </h1>
             </Row>

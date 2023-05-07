@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Card, CardBody, CardSubtitle, CardTitle, Container, Col, Row } from "reactstrap";
-import { HandleGetList } from "../components/api";
+import { HandleGetList } from "../utilities/api";
 import { GetCountries, GetBreeds } from "../utilities/options";
 import Select from 'react-select'
 

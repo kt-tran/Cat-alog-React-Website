@@ -1,4 +1,4 @@
-import { HandleGetList } from "../components/api";
+import { HandleGetList } from "./api";
 
 export function GetCountries() {
     const { loading, list, error } = HandleGetList();

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Collapse,
     Navbar,
@@ -14,13 +14,11 @@ import {
 } from 'reactstrap';
 import { NavLink as Routing } from 'react-router-dom';
 import { FaPaw } from "react-icons/fa";
+import { RandomCat } from '../utilities/randomID';
 
-//TODO: implement stateful navbar
 const activeStyle = {
     fontWeight: "bold",
-    color: "red"
 };
-
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +27,7 @@ export default function Header() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle2 = () => setDropdownOpen((prevState) => !prevState);
 
+    let randCat = RandomCat();
 
     return (
         <div>
@@ -41,7 +40,11 @@ export default function Header() {
                             <NavLink tag={Routing} to="/cats" className="darkNav">Browse</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink tag={Routing} to="/" className="darkNav">Random</NavLink>
+                            {randCat ?
+                                <NavLink tag={Routing} to={`/details/?id=${randCat.id}`} className="darkNav">Cat of the Day</NavLink>
+                                :
+                                <NavLink tag={Routing} to={`/`} className="darkNav">Loading...</NavLink>
+                            }
                         </NavItem>
                         <NavItem>
                             <NavLink tag={Routing} to="/search" className="darkNav">Search</NavLink>

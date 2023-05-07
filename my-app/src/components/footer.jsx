@@ -3,7 +3,7 @@ import { Container, Col } from "reactstrap";
 import InfoIcon from '@mui/icons-material/Info';
 import HelpIcon from '@mui/icons-material/Help';
 import { FaPaw } from "react-icons/fa";
-import { HandleGetFact } from './api';
+import { HandleGetFact } from '../utilities/api';
 
 
 export default function Footer() {

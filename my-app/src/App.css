@@ -67,8 +67,9 @@ footer {
   height: 400px;
 }
 
-.card {
-  width: 25rem;
+.card img {
+  object-fit: cover;
+  height: 350px;
 }
 
 #frontpage {
@@ -105,4 +106,17 @@ footer {
 
 .homeCard {
   width: 15rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: auto;
 }

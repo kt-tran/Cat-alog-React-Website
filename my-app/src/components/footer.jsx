@@ -25,8 +25,8 @@ export default function Footer() {
                     </Container>
                 </Col>
                 <Col className="pe-2 col-md-2 justify-content-end list-unstyled d-flex">
-                    <li className="ms-3"><NavLink className="text-white" to="/contactUs"><HelpIcon /></NavLink></li>
-                    <li className="ms-3"><NavLink className="text-white" to="/aboutUs"><InfoIcon /></NavLink></li>
+                    <li className="ms-3"><NavLink className="text-white" to="/contact"><HelpIcon /></NavLink></li>
+                    <li className="ms-3"><NavLink className="text-white" to="/about"><InfoIcon /></NavLink></li>
                 </Col>
             </footer>
         </div>

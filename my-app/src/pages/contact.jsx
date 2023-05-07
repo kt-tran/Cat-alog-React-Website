@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { Container, Form, Input, Row, Col, Label, FormGroup, Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { Container, Form, Input, Row, Col, Label, FormGroup, Button, FormFeedback, } from "reactstrap";
 
 export default function ContactUs() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
     const [feedback, setFeedback] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
     function handleSubmit(e) {
         if (firstName && lastName && email && feedback) {
-            alert('Thank you for your inquiry :) We aim to respond to you as soon as we can.')
+            alert('Thank you for your inquiry :) \nWe aim to respond to you as soon as we can.')
         } else {
             e.preventDefault();
             setSubmitted(true);
@@ -28,7 +29,7 @@ export default function ContactUs() {
                 <p> Have a question? We're happy to answer.</p>
             </Container>
 
-            <Container className="mt-1 mb-5 pb-3 w-50 justify-content-center">
+            <Container className="mt-1 mb-3 w-50 justify-content-center">
                 <Form onSubmit={handleSubmit}>
                     <Row>
                         <Col>
@@ -83,6 +84,23 @@ export default function ContactUs() {
                                 </Label>
                             </FormGroup>
 
+                            <FormGroup floating>
+                                <Input
+                                    id="phone"
+                                    invalid={!phone && submitted}
+                                    name="Phone"
+                                    placeholder="Phone Number"
+                                    type="number"
+                                    onChange={(event) => {
+                                        setPhone(event.target.value);
+                                    }}
+                                />
+                                {phone === "" ? <FormFeedback>Please enter a phone number with no symbols or characters</FormFeedback> : null}
+                                <Label for="phone">
+                                    Phone Number
+                                </Label>
+                            </FormGroup>
+
                             <FormGroup>
                                 <Input
                                     rows="5"
@@ -108,7 +126,7 @@ export default function ContactUs() {
                 </Form>
                 <hr></hr>
             </Container>
-            <Container className="pb-2">
+            <Container>
                 <Row>
                     <Col>
                         <p>Phone us @ 1800 123 456</p>

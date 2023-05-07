@@ -67,7 +67,7 @@ export default function BarChartDetails(props) {
         vocalisation: props.cat.vocalisation
     }
 
-    
+
     useEffect(() => {
         const chart = chartRef.current;
         const data = {
@@ -96,18 +96,18 @@ export default function BarChartDetails(props) {
             }))
         }
         setChartData(chartData);
-    },[
-        catData.adaptability, 
-        catData.affection, 
-        catData.childFriendliness, 
-        catData.dogFriendliness, 
-        catData.energy, 
-        catData.grooming, 
+    }, [
+        catData.adaptability,
+        catData.affection,
+        catData.childFriendliness,
+        catData.dogFriendliness,
+        catData.energy,
+        catData.grooming,
         catData.health_issues,
-        catData.intelligence, 
-        catData.shedding_level, 
-        catData.social_needs, 
-        catData.stranger_friendly, 
+        catData.intelligence,
+        catData.shedding_level,
+        catData.social_needs,
+        catData.stranger_friendly,
         catData.vocalisation
     ])
 

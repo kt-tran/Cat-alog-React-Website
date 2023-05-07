@@ -1,7 +1,7 @@
 import { AgGridReact } from "ag-grid-react";
 import { Row, Col } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { HandleGetList } from "../components/api";
 import { AffectionRenderer } from "../components/affectionRenderer";
 import { ChildfriendlyRenderer } from "../components/childfriendlyRenderer";
@@ -19,8 +19,7 @@ export default function CatTable() {
     }
 
     const navigate = useNavigate();
-    // const paginationSize = 12;
-
+    
     const [rowData, setRowData] = useState([]);
     const [columnDefs, setColumnDefs] = useState([
         { headerName: "Name", field: "name", filter: 'agTextColumnFilter', filterParams: textCustomFilterParams, sortable: true  },
@@ -76,7 +75,7 @@ export default function CatTable() {
                             paginationAutoPageSize={true}
                             onRowClicked={(
                                 row) => {
-                                navigate(`/itemtest/?id=${row.data.id}`);
+                                navigate(`/details/?id=${row.data.id}`);
                             }}
                         />
                     </div>

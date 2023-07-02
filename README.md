@@ -1,2 +1,2 @@
-# Cocktail Website
- IFN666 Front-end website assignment
+# Cat Species Website
+ IFN666 Front-end React website assignment
